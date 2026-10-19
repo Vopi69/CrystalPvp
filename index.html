@@ -7,88 +7,95 @@
 <title>Crystal Practice</title>
 <style>
 :root {
-  --bg:#0c0e14;
-  --panel:#151925;
-  --border:#2b3040;
-  --text:#f4f5fb;
-  --muted:#9299ae;
-  --purple:#8b7cff;
+  --bg:#0c0e14; --panel:#151925; --border:#2b3040;
+  --text:#f4f5fb; --muted:#9299ae; --accent:#8b7cff;
   --green:#5eead4;
 }
-* { box-sizing:border-box; }
+* { box-sizing:border-box }
 body {
-  margin:0;
-  background:radial-gradient(ellipse at top,#242044,var(--bg) 55%);
-  color:var(--text);
-  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  margin:0; background:radial-gradient(ellipse at top,#242044,var(--bg) 55%);
+  color:var(--text);font-family:system-ui,sans-serif;
 }
-button,input { font:inherit; }
-button { cursor:pointer; color:inherit; }
-.app { max-width:1200px; margin:auto; padding:22px; }
-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; }
-.brand { display:flex; align-items:center; gap:12px; font-size:22px; font-weight:800; }
-.logo { background:linear-gradient(135deg,var(--purple),#c17cff); padding:8px 13px; border-radius:12px; }
-.layout { display:grid; grid-template-columns:205px 1fr; gap:22px; }
-.sidebar { display:flex; flex-direction:column; gap:7px; }
-.nav,.btn { padding:11px 14px; border:1px solid var(--border); border-radius:11px; background:var(--panel); }
-.nav { text-align:left; background:transparent; color:var(--muted); border-color:transparent; }
-.nav.active,.nav:hover { background:#8b7cff22; color:var(--text); border-color:#8b7cff66; }
-.page { display:none; }
-.page.active { display:block; }
-h1 { font-size:clamp(30px,4vw,42px); letter-spacing:-1.5px; margin:7px 0; }
-h2,h3 { margin-top:0; }
-.muted { color:var(--muted); }
-.eyebrow { color:var(--green); font-size:11px; letter-spacing:1.5px; font-weight:800; }
-.heading { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-bottom:22px; }
-.card { background:var(--panel); border:1px solid var(--border); border-radius:17px; padding:20px; }
-.stats,.modes { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
-.modes { grid-template-columns:repeat(2,1fr); margin-top:15px; }
-.stat-label { color:var(--muted); font-size:12px; }
-.stat { font-size:30px; font-weight:850; }
-.mode { display:flex; flex-direction:column; min-height:175px; }
-.mode p { color:var(--muted); font-size:14px; }
-.mode button { margin-top:auto; align-self:flex-start; }
-.btn { transition:.15s; }
-.btn:hover { border-color:var(--purple); }
-.primary { background:var(--purple); border-color:var(--purple); font-weight:750; }
-.btn:disabled { opacity:.5; cursor:not-allowed; }
-.practice { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:14px; }
-.arena { min-height:400px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px); background-size:32px 32px; }
-.timer { font-size:44px; font-weight:850; }
-.target { width:145px; height:145px; margin:18px auto; display:grid; place-items:center; border-radius:25px; border:1px solid #8b7cff88; background:#8b7cff18; font-size:65px; user-select:none; touch-action:manipulation; }
-.target:active { transform:scale(.96); border-color:var(--green); }
-.controls { display:flex; justify-content:center; gap:9px; flex-wrap:wrap; margin-top:16px; }
-.hint { max-width:420px; color:var(--muted); font-size:13px; }
-.side { display:flex; flex-direction:column; gap:14px; }
-.metric { display:flex; justify-content:space-between; gap:8px; padding:11px 0; border-bottom:1px solid var(--border); }
-.metric:last-child { border:0; }
-.metric span { color:var(--muted); font-size:13px; }
-.metric strong { font-size:17px; }
-.keys { display:flex; justify-content:space-between; padding:7px 0; color:var(--muted); font-size:13px; }
-kbd { padding:3px 8px; background:#0d1018; border:1px solid #41485a; border-radius:6px; color:var(--text); }
-.field { margin:15px 0; }
-.field label { display:block; margin-bottom:6px; color:var(--muted); font-size:13px; }
-input { width:100%; padding:10px; background:#0d1018; color:white; border:1px solid var(--border); border-radius:9px; }
-.charges { display:flex; gap:7px; margin:12px; }
-.charges i { width:15px; height:15px; border:1px solid #625b88; border-radius:4px; background:#272437; }
-.charges i.on { background:var(--purple); }
-.anchor-block { width:95px; height:90px; display:grid; place-items:center; border:3px solid #5d557d; border-radius:13px; background:#211d32; font-size:45px; }
-table { width:100%; border-collapse:collapse; }
-td,th { text-align:left; padding:12px 8px; border-bottom:1px solid var(--border); font-size:13px; }
-th { color:var(--muted); }
-.empty { text-align:center; padding:25px; color:var(--muted); }
-.hidden { display:none!important; }
-.toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#252b3a; border:1px solid var(--border); padding:12px 18px; border-radius:10px; opacity:0; pointer-events:none; transition:.2s; }
-.toast.show { opacity:1; }
+body.light {
+  --bg:#f2f4f9;--panel:#fff;--border:#dce0eb;
+  --text:#171a24;--muted:#687084;
+  background:radial-gradient(ellipse at top,#e8e3ff,var(--bg) 60%);
+}
+button,input,select { font:inherit }
+button { cursor:pointer;color:inherit }
+.app { max-width:1200px;margin:auto;padding:22px }
+header { display:flex;justify-content:space-between;align-items:center;margin-bottom:24px }
+.brand { display:flex;align-items:center;gap:12px;font-size:22px;font-weight:800 }
+.logo { background:linear-gradient(135deg,var(--accent),#c17cff);padding:8px 13px;border-radius:12px }
+.layout { display:grid;grid-template-columns:205px 1fr;gap:22px }
+.sidebar { display:flex;flex-direction:column;gap:7px }
+.nav,.btn { padding:11px 14px;border:1px solid var(--border);border-radius:11px;background:var(--panel) }
+.nav { text-align:left;background:transparent;color:var(--muted);border-color:transparent }
+.nav.active,.nav:hover { background:#8b7cff22;color:var(--text);border-color:#8b7cff66 }
+.page { display:none }
+.page.active { display:block }
+h1 { font-size:clamp(30px,4vw,42px);letter-spacing:-1.5px;margin:7px 0 }
+h2,h3 { margin-top:0 }
+.muted { color:var(--muted) }
+.eyebrow { color:var(--green);font-size:11px;letter-spacing:1.5px;font-weight:800 }
+.heading { display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px }
+.card { background:var(--panel);border:1px solid var(--border);border-radius:17px;padding:20px }
+.stats,.modes { display:grid;grid-template-columns:repeat(3,1fr);gap:13px }
+.modes { grid-template-columns:repeat(2,1fr);margin-top:15px }
+.stat-label { color:var(--muted);font-size:12px }
+.stat { font-size:30px;font-weight:850 }
+.mode { display:flex;flex-direction:column;min-height:165px }
+.mode p { color:var(--muted);font-size:14px }
+.mode button { margin-top:auto;align-self:flex-start }
+.primary { background:var(--accent);border-color:var(--accent);font-weight:750 }
+.btn:hover { border-color:var(--accent) }
+.btn:disabled { opacity:.5;cursor:not-allowed }
+.practice { display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:14px }
+.arena {
+  min-height:390px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  background-image:linear-gradient(#ffffff08 1px,transparent 1px),
+  linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.timer { font-size:44px;font-weight:850 }
+.target {
+  width:145px;height:145px;margin:18px auto;display:grid;place-items:center;
+  border-radius:25px;border:1px solid #8b7cff88;background:#8b7cff18;
+  font-size:65px;user-select:none;touch-action:manipulation;
+}
+.target:active,.hit { transform:scale(.96);border-color:var(--green)!important }
+.controls { display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:16px }
+.hint { max-width:420px;color:var(--muted);font-size:13px }
+.side { display:flex;flex-direction:column;gap:14px }
+.metric { display:flex;justify-content:space-between;gap:8px;padding:11px 0;border-bottom:1px solid var(--border) }
+.metric:last-child { border:0 }
+.metric span { color:var(--muted);font-size:13px }
+.metric strong { font-size:17px }
+.keys,.bindrow { display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0 }
+kbd { padding:3px 8px;background:var(--bg);border:1px solid var(--border);border-radius:6px }
+.field { margin:15px 0 }
+.field label { display:block;margin-bottom:6px;color:var(--muted);font-size:13px }
+input,select { width:100%;padding:10px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:9px }
+.row { display:grid;grid-template-columns:1fr 1fr;gap:12px }
+.progress { height:7px;background:var(--border);border-radius:20px;overflow:hidden;margin:10px 0 }
+.progress span { display:block;height:100%;width:0;background:var(--accent) }
+table { width:100%;border-collapse:collapse }
+td,th { text-align:left;padding:12px 8px;border-bottom:1px solid var(--border);font-size:13px }
+th { color:var(--muted) }
+.empty { text-align:center;padding:25px;color:var(--muted) }
+.toast { position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--border);padding:12px 18px;border-radius:10px;opacity:0;pointer-events:none }
+.toast.show { opacity:1 }
+.listening { border-color:var(--green)!important;color:var(--green) }
 @media(max-width:800px) {
-  .layout,.practice { grid-template-columns:1fr; }
-  .sidebar { display:grid; grid-template-columns:repeat(3,1fr); }
-  .nav { text-align:center; padding:10px 3px; font-size:12px; }
+ .layout,.practice { grid-template-columns:1fr }
+ .sidebar { display:grid;grid-template-columns:repeat(3,1fr) }
+ .nav { text-align:center;padding:10px 3px;font-size:12px }
 }
 @media(max-width:520px) {
-  .app { padding:13px; }
-  .stats,.modes { grid-template-columns:1fr; }
-  .heading { align-items:flex-start; flex-direction:column; }
+ .app { padding:13px }
+ .stats,.modes,.row { grid-template-columns:1fr }
+ .heading { align-items:flex-start;flex-direction:column }
 }
 </style>
 </head>
@@ -96,7 +103,7 @@ th { color:var(--muted); }
 <div class="app">
 <header>
   <div class="brand"><div class="logo">◇</div>Crystal Practice</div>
-  <button class="btn" id="theme">☼ Vzhled</button>
+  <button class="btn" id="themeBtn">☼ Vzhled</button>
 </header>
 
 <div class="layout">
@@ -111,7 +118,9 @@ th { color:var(--muted); }
 <main>
 <section class="page active" id="page-home">
   <div class="heading">
-    <div><div class="eyebrow">TRÉNINKOVÝ HUB</div><h1>Zlepši svůj gameplay.</h1><p class="muted">Trénuj rychlost, sekvence a přesnost.</p></div>
+    <div><div class="eyebrow">TRÉNINKOVÝ HUB</div>
+    <h1>Zlepši svůj gameplay.</h1>
+    <p class="muted">Trénuj rychlost, sekvence a přesnost.</p></div>
     <button class="btn primary" data-go="anchor">Začít trénovat ↗</button>
   </div>
   <div class="stats">
@@ -120,61 +129,93 @@ th { color:var(--muted); }
     <div class="card"><div class="stat-label">Dokončené testy</div><div class="stat" id="runs">0</div></div>
   </div>
   <div class="modes">
-    <div class="card mode"><h2>◈ Anchor Practice</h2><p>Nabíjej anchor a používej ho. Dokonči co nejvíce cyklů za 30 sekund.</p><button class="btn" data-go="anchor">Otevřít →</button></div>
-    <div class="card mode"><h2>✧ Crystal Speed</h2><p>Desetisekundový test klikání s měřením akcí za sekundu.</p><button class="btn" data-go="crystal">Otevřít →</button></div>
+    <div class="card mode"><h2>◈ Anchor Practice</h2><p>Nabíjej anchor a používej ho. Nastav si čas i cíl.</p><button class="btn" data-go="anchor">Otevřít →</button></div>
+    <div class="card mode"><h2>✧ Crystal Speed</h2><p>Trénuj klikání, přesnost a rychlé střídání akcí.</p><button class="btn" data-go="crystal">Otevřít →</button></div>
   </div>
-  <div class="card" style="margin-top:15px"><b>Jak to funguje</b><p class="muted">Jde o samostatný simulátor v prohlížeči, nikoliv o propojení s Minecraftem. Výsledky zůstávají v tomto prohlížeči.</p></div>
+  <div class="card" style="margin-top:15px"><b>Poslední výsledky</b><p class="muted" id="recent">Zatím žádné výsledky.</p><small class="muted">Simulátor v prohlížeči, není propojený se skutečným Minecraftem.</small></div>
 </section>
 
 <section class="page" id="page-anchor">
-  <div class="heading"><div><div class="eyebrow">MODUL 01</div><h1>Anchor Practice</h1><p class="muted">Dokonči co nejvíc cyklů za 30 sekund.</p></div><span id="aState">PŘIPRAVENO</span></div>
+  <div class="heading"><div><div class="eyebrow">MODUL 01</div><h1>Anchor Practice</h1><p class="muted">Dokonči cykly co nejrychleji.</p></div><span id="aState">PŘIPRAVENO</span></div>
   <div class="practice">
     <div class="card arena">
       <div class="timer" id="aTimer">30.0 s</div>
-      <div class="anchor-block" id="anchorBlock">◇</div>
-      <div class="charges" id="charges"><i></i><i></i><i></i><i></i></div>
-      <p class="hint" id="aHint">E = nabít glowstonem · Q = použít anchor.</p>
-      <div class="controls"><button class="btn primary" id="aStart">Spustit trénink</button><button class="btn" id="aReset">Reset</button></div>
+      <button class="target" id="anchorObject">◇</button>
+      <div id="chargeBoxes">○ ○ ○ ○</div>
+      <p class="hint">Nabij anchor a potom ho použij.</p>
+      <div class="progress"><span id="aProgress"></span></div>
+      <div>Cíl: <b id="aGoalLabel">10 cyklů</b></div>
+      <div class="progress"><span id="aGoalProgress"></span></div>
+      <div class="controls">
+        <button class="btn primary" id="aStart">Spustit trénink</button>
+        <button class="btn" id="aReset">Reset</button>
+        <button class="btn" id="aMobileCharge">Nabít</button>
+        <button class="btn" id="aMobileUse">Použít</button>
+      </div>
     </div>
     <div class="side">
-      <div class="card"><h3>Výkon</h3><div class="metric"><span>Dokončené cykly</span><strong id="cycles">0</strong></div><div class="metric"><span>Nabití</span><strong id="charge">0 / 4</strong></div><div class="metric"><span>Tempo</span><strong id="rate">0/min</strong></div></div>
-      <div class="card"><h3>Ovládání</h3><div class="keys"><span>Nabít</span><kbd id="kCharge">E</kbd></div><div class="keys"><span>Použít</span><kbd id="kUse">Q</kbd></div><div class="keys"><span>Restart</span><kbd>R</kbd></div></div>
+      <div class="card"><h3>Výkon</h3>
+        <div class="metric"><span>Cyklů</span><strong id="aCycles">0</strong></div>
+        <div class="metric"><span>Nabití</span><strong id="aCharge">0 / 4</strong></div>
+        <div class="metric"><span>Tempo</span><strong id="aRate">0/min</strong></div>
+      </div>
+      <div class="card"><h3>Bindy</h3><div id="anchorBindings"></div><div class="keys"><span>Restart</span><kbd>R</kbd></div></div>
     </div>
   </div>
 </section>
 
 <section class="page" id="page-crystal">
-  <div class="heading"><div><div class="eyebrow">MODUL 02</div><h1>Crystal Speed</h1><p class="muted">Desetisekundový klikací test.</p></div><span id="cState">PŘIPRAVENO</span></div>
+  <div class="heading"><div><div class="eyebrow">MODUL 02</div><h1>Crystal Speed</h1><p class="muted">Střídej akce a zlepšuj své CPS.</p></div><span id="cState">PŘIPRAVENO</span></div>
   <div class="practice">
     <div class="card arena">
       <div class="timer" id="cTimer">10.0 s</div>
-      <button class="target" id="target" aria-label="Tréninkový cíl">✧</button>
-      <p class="hint" id="cHint">Spusť test. Levý klik = rozbití, pravý klik = položení.</p>
-      <div class="controls"><button class="btn primary" id="cStart">Spustit test</button><button class="btn" id="cReset">Reset</button></div>
+      <button class="target" id="crystalObject">✧</button>
+      <p class="hint">Levý klik = rozbití, pravý klik = položení.</p>
+      <div class="progress"><span id="cGoalProgress"></span></div>
+      <div>Cíl: <b id="cGoalLabel">20 akcí</b></div>
+      <div class="controls">
+        <button class="btn primary" id="cStart">Spustit test</button>
+        <button class="btn" id="cReset">Reset</button>
+        <button class="btn" id="cMobileBreak">Rozbít</button>
+        <button class="btn" id="cMobilePlace">Položit</button>
+        <button class="btn" id="cMobileExtra">Extra</button>
+      </div>
     </div>
     <div class="side">
-      <div class="card"><h3>Výsledky testu</h3><div class="metric"><span>Akce celkem</span><strong id="actions">0</strong></div><div class="metric"><span>Akce / sekundu</span><strong id="cps">0.0</strong></div><div class="metric"><span>Rozbití</span><strong id="breaks">0</strong></div><div class="metric"><span>Položení</span><strong id="places">0</strong></div><div class="metric"><span>Sekvence správně</span><strong id="accuracy">—</strong></div></div>
-      <div class="card"><h3>Klávesy</h3><div class="keys"><span>Rozbít</span><kbd id="kBreak">X</kbd></div><div class="keys"><span>Položit</span><kbd id="kPlace">C</kbd></div><div class="keys"><span>Extra akce</span><kbd id="kExtra">F</kbd></div></div>
+      <div class="card"><h3>Výsledky</h3>
+        <div class="metric"><span>Akce celkem</span><strong id="cActions">0</strong></div>
+        <div class="metric"><span>Akce / sekundu</span><strong id="cps">0.0</strong></div>
+        <div class="metric"><span>Rozbití</span><strong id="cBreaks">0</strong></div>
+        <div class="metric"><span>Položení</span><strong id="cPlaces">0</strong></div>
+        <div class="metric"><span>Přesnost sekvence</span><strong id="cAccuracy">—</strong></div>
+      </div>
+      <div class="card"><h3>Bindy</h3><div id="crystalBindings"></div></div>
     </div>
   </div>
 </section>
 
 <section class="page" id="page-records">
-  <div class="heading"><div><div class="eyebrow">TVŮJ PROGRES</div><h1>Výsledky</h1></div><button class="btn" id="clear">Smazat historii</button></div>
-  <div class="card"><table><thead><tr><th>Režim</th><th>Skóre</th><th>Datum</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">Zatím žádné výsledky.</div></div>
+  <div class="heading"><div><div class="eyebrow">TVŮJ PROGRES</div><h1>Výsledky</h1></div><button class="btn" id="clearRecords">Smazat historii</button></div>
+  <div class="card"><table><thead><tr><th>Režim</th><th>Skóre</th><th>Datum</th></tr></thead><tbody id="recordRows"></tbody></table><div id="recordEmpty" class="empty">Zatím žádné výsledky.</div></div>
 </section>
 
 <section class="page" id="page-settings">
-  <div class="heading"><div><div class="eyebrow">PŘIZPŮSOBENÍ</div><h1>Nastavení</h1><p class="muted">Změň klávesy a ulož je.</p></div></div>
-  <div class="card" style="max-width:650px">
-    <div class="field"><label for="bindCharge">Nabít anchor</label><input id="bindCharge" maxlength="1"></div>
-    <div class="field"><label for="bindUse">Použít anchor</label><input id="bindUse" maxlength="1"></div>
-    <div class="field"><label for="bindBreak">Rozbít krystal</label><input id="bindBreak" maxlength="1"></div>
-    <div class="field"><label for="bindPlace">Položit krystal</label><input id="bindPlace" maxlength="1"></div>
-    <div class="field"><label for="bindExtra">Extra akce</label><input id="bindExtra" maxlength="1"></div>
-    <button class="btn primary" id="saveSettings">Uložit nastavení</button>
-    <button class="btn" id="defaults">Výchozí</button>
-    <p class="muted">Stránka ovládá pouze vlastní trénink, nikoli skutečný Minecraft.</p>
+  <div class="heading"><div><div class="eyebrow">PŘIZPŮSOBENÍ</div><h1>Nastavení</h1></div></div>
+  <div class="card">
+    <h3>Vzhled a jazyk</h3>
+    <div class="field"><label>Barevný režim</label><select id="themeSelect"><option value="dark">Tmavý</option><option value="light">Světlý</option></select></div>
+    <div class="field"><label>Jazyk</label><select id="languageSettings"><option value="cs">Čeština</option><option value="en">English</option><option value="de">Deutsch</option><option value="sk">Slovenčina</option></select></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>Délka tréninku (sekundy)</h3>
+    <div class="row"><div class="field"><label>Anchor Practice</label><input id="anchorDuration" type="number" min="5" max="600"></div><div class="field"><label>Crystal Speed</label><input id="crystalDuration" type="number" min="5" max="600"></div></div>
+    <h3>Cíle (0 = vypnuto)</h3>
+    <div class="row"><div class="field"><label>Anchor – počet cyklů</label><input id="anchorGoal" type="number" min="0" max="10000"></div><div class="field"><label>Crystal – počet akcí</label><input id="crystalGoal" type="number" min="0" max="10000"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>Ovládání a bindy</h3><p class="muted">Nastav si klávesu nebo tlačítko myši pro každou akci.</p>
+    <div id="settingsBindings"></div>
+    <div class="controls"><button class="btn primary" id="saveSettings">Uložit nastavení</button><button class="btn" id="defaultSettings">Výchozí nastavení</button></div>
   </div>
 </section>
 </main>
@@ -183,236 +224,196 @@ th { color:var(--muted); }
 </div>
 
 <script>
+(()=>{
 'use strict';
-(() => {
-const $ = id => document.getElementById(id);
-const DEFAULTS = {charge:'e',use:'q',brk:'x',place:'c',extra:'f'};
-const read = (key, fallback) => {
-  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
-  catch { return fallback; }
+const $=id=>document.getElementById(id);
+const defaults={
+ aCharge:{type:'key',value:'e'},aUse:{type:'key',value:'q'},
+ cBreak:{type:'key',value:'x'},cPlace:{type:'key',value:'c'},
+ cExtra:{type:'key',value:'f'}
 };
-const save = (key,value) => {
-  try { localStorage.setItem(key,JSON.stringify(value)); } catch {}
+const defaultConfig={anchorDuration:30,crystalDuration:10,anchorGoal:10,crystalGoal:20,theme:'dark',language:'cs'};
+function load(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+let settings={...defaults,...load('cp-settings',{})};
+let config={...defaultConfig,...load('cp-config',{})};
+let records=load('cp-records',[]),A=null,C=null,listenFor=null,pendingMouse=false;
+
+const words={
+ cs:{charge:'Nabít anchor',use:'Použít anchor',brk:'Rozbít krystal',place:'Položit krystal',extra:'Extra akce',mouse:'Myš',bindPrompt:'Stiskni klávesu…',left:'Levý klik',middle:'Prostřední klik',right:'Pravý klik',mb4:'Boční tlačítko 1',mb5:'Boční tlačítko 2'},
+ en:{charge:'Charge anchor',use:'Use anchor',brk:'Break crystal',place:'Place crystal',extra:'Extra action',mouse:'Mouse',bindPrompt:'Press a key…',left:'Left click',middle:'Middle click',right:'Right click',mb4:'Side button 1',mb5:'Side button 2'},
+ de:{charge:'Anchor laden',use:'Anchor benutzen',brk:'Kristall abbauen',place:'Kristall platzieren',extra:'Zusatzaktion',mouse:'Maus',bindPrompt:'Taste drücken…',left:'Linksklick',middle:'Mittelklick',right:'Rechtsklick',mb4:'Seitentaste 1',mb5:'Seitentaste 2'},
+ sk:{charge:'Nabiť anchor',use:'Použiť anchor',brk:'Rozbiť kryštál',place:'Položiť kryštál',extra:'Extra akcia',mouse:'Myš',bindPrompt:'Stlač kláves…',left:'Ľavý klik',middle:'Stredný klik',right:'Pravý klik',mb4:'Bočné tlačidlo 1',mb5:'Bočné tlačidlo 2'}
 };
-let settings = {...DEFAULTS,...read('cp-settings',{})};
-let records = read('cp-records',[]);
-let A,C;
+const t=k=>(words[config.language]||words.cs)[k]||words.cs[k]||k;
+function toast(msg){const e=$('toast');e.textContent=msg;e.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>e.classList.remove('show'),2200)}
+function go(p){document.querySelectorAll('.page').forEach(e=>e.classList.toggle('active',e.id==='page-'+p));document.querySelectorAll('.nav').forEach(e=>e.classList.toggle('active',e.dataset.page===p));if(p==='records')drawRecords()}
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
 
-function toast(message) {
-  const el=$('toast');
-  el.textContent=message;
-  el.classList.add('show');
-  clearTimeout(toast.timer);
-  toast.timer=setTimeout(()=>el.classList.remove('show'),2000);
-}
-function go(page) {
-  document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',el.id==='page-'+page));
-  document.querySelectorAll('.nav').forEach(el=>el.classList.toggle('active',el.dataset.page===page));
-  if(page==='records') drawRecords();
-  if(page==='home') drawHome();
-}
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+function setTheme(v){config.theme=v;document.body.classList.toggle('light',v==='light');$('themeSelect').value=v}
+$('themeBtn').onclick=()=>{setTheme(config.theme==='dark'?'light':'dark');save('cp-config',config)};
+$('themeSelect').onchange=e=>{setTheme(e.target.value);save('cp-config',config)};
+$('languageSettings').onchange=e=>{config.language=e.target.value;save('cp-config',config);renderBindings()};
 
-$('theme').addEventListener('click',()=>{
-  const light=document.documentElement.dataset.theme!=='light';
-  document.documentElement.dataset.theme=light?'light':'dark';
-  const vars={'--bg':light?'#f2f4f9':'#0c0e14','--panel':light?'#fff':'#151925','--border':light?'#dce0eb':'#2b3040','--text':light?'#171a24':'#f4f5fb','--muted':light?'#687084':'#9299ae'};
-  Object.entries(vars).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));
-  document.documentElement.style.colorScheme=light?'light':'dark';
-  save('cp-light',light);
+const durationA=()=>Math.max(5,Math.min(600,Number(config.anchorDuration)||30));
+const durationC=()=>Math.max(5,Math.min(600,Number(config.crystalDuration)||10));
+const goalA=()=>Math.max(0,Number(config.anchorGoal)||0);
+const goalC=()=>Math.max(0,Number(config.crystalGoal)||0);
+
+function resetA(){
+ if(A?.timer)clearInterval(A.timer);
+ A={run:false,left:durationA(),elapsed:0,cycles:0,charge:0,timer:null};
+ $('aState').textContent='PŘIPRAVENO';$('aStart').disabled=false;
+ $('aStart').textContent='Spustit trénink';drawA();
+}
+function drawA(){
+ $('aTimer').textContent=A.left.toFixed(1)+' s';
+ $('aCycles').textContent=A.cycles;$('aCharge').textContent=A.charge+' / 4';
+ $('aRate').textContent=(A.elapsed?Math.round(A.cycles/A.elapsed*60):0)+'/min';
+ $('aGoalLabel').textContent=goalA()?goalA()+' cyklů':'Vypnuto';
+ $('aProgress').style.width=(A.elapsed/durationA()*100)+'%';
+ $('aGoalProgress').style.width=goalA()?Math.min(100,A.cycles/goalA()*100)+'%':'0%';
+ $('chargeBoxes').textContent=Array.from({length:4},(_,i)=>i<A.charge?'●':'○').join(' ');
+}
+function startA(){
+ resetA();A.run=true;$('aState').textContent='PROBÍHÁ';$('aStart').disabled=true;
+ A.timer=setInterval(()=>{A.left=Math.max(0,A.left-.1);A.elapsed+=.1;drawA();if(A.left<=0||(goalA()&&A.cycles>=goalA()))finishA()},100);
+}
+function finishA(){
+ if(!A.run)return;clearInterval(A.timer);A.run=false;$('aState').textContent='DOKONČENO';$('aStart').disabled=false;
+ addRecord('Anchor Practice',A.cycles+' cyklů',A.cycles);toast('Anchor Practice dokončen');
+}
+function charge(){if(!A?.run)return;if(A.charge<4)A.charge++;else toast('Anchor je plně nabitý');drawA()}
+function useAnchor(){
+ if(!A?.run)return;if(!A.charge){toast('Nejdřív nabij anchor');return}
+ A.charge=0;A.cycles++;$('anchorObject').classList.add('hit');
+ setTimeout(()=>$('anchorObject').classList.remove('hit'),100);drawA();
+ if(goalA()&&A.cycles>=goalA())finishA();
+}
+$('aStart').onclick=startA;$('aReset').onclick=resetA;
+$('aMobileCharge').onclick=charge;$('aMobileUse').onclick=useAnchor;
+
+function resetC(){
+ if(C?.timer)clearInterval(C.timer);
+ C={run:false,left:durationC(),elapsed:0,breaks:0,places:0,extra:0,wrong:0,expected:'break',timer:null};
+ $('cState').textContent='PŘIPRAVENO';$('cStart').disabled=false;$('cStart').textContent='Spustit test';drawC();
+}
+function drawC(){
+ const n=C.breaks+C.places+C.extra;
+ $('cTimer').textContent=C.left.toFixed(1)+' s';$('cActions').textContent=n;
+ $('cps').textContent=(n/Math.max(.1,C.elapsed)).toFixed(1);
+ $('cBreaks').textContent=C.breaks;$('cPlaces').textContent=C.places;
+ $('cAccuracy').textContent=n?Math.round((n-C.wrong)/n*100)+'%':'—';
+ $('cGoalLabel').textContent=goalC()?goalC()+' akcí':'Vypnuto';
+ $('cGoalProgress').style.width=goalC()?Math.min(100,n/goalC()*100)+'%':'0%';
+}
+function startC(){
+ resetC();C.run=true;$('cState').textContent='PROBÍHÁ';$('cStart').disabled=true;
+ C.timer=setInterval(()=>{C.left=Math.max(0,C.left-.1);C.elapsed=Math.min(durationC(),C.elapsed+.1);drawC();if(C.left<=0||(goalC()&&C.breaks+C.places+C.extra>=goalC()))finishC()},100);
+}
+function finishC(){
+ if(!C.run)return;clearInterval(C.timer);C.run=false;
+ const n=C.breaks+C.places+C.extra,cps=n/Math.max(.1,C.elapsed);
+ $('cState').textContent='DOKONČENO';$('cStart').disabled=false;
+ addRecord('Crystal Speed',cps.toFixed(1)+' akcí/s',cps);toast('Crystal test dokončen');
+}
+function action(type){
+ if(!C?.run)return;
+ if(type!==C.expected)C.wrong++;
+ if(type==='break')C.breaks++;else if(type==='place')C.places++;else C.extra++;
+ C.expected=type==='break'?'place':'break';
+ $('crystalObject').classList.add('hit');setTimeout(()=>$('crystalObject').classList.remove('hit'),70);
+ drawC();if(goalC()&&C.breaks+C.places+C.extra>=goalC())finishC();
+}
+$('cStart').onclick=startC;$('cReset').onclick=resetC;
+$('cMobileBreak').onclick=()=>action('break');
+$('cMobilePlace').onclick=()=>action('place');
+$('cMobileExtra').onclick=()=>action('extra');
+$('crystalObject').addEventListener('pointerdown',e=>{
+ if(e.button===0){e.preventDefault();action('break')}
+ else if(e.button===2){e.preventDefault();action('place')}
 });
-if(read('cp-light',false)) $('theme').click();
+$('crystalObject').oncontextmenu=e=>e.preventDefault();
 
-/* Anchor Practice */
-function drawA() {
-  $('aTimer').textContent=A.left.toFixed(1)+' s';
-  $('cycles').textContent=A.cycles;
-  $('charge').textContent=A.charge+' / 4';
-  $('rate').textContent=(A.elapsed?Math.round(A.cycles/A.elapsed*60):0)+'/min';
-  $('charges').querySelectorAll('i').forEach((el,i)=>el.classList.toggle('on',i<A.charge));
+function addRecord(mode,score,value){
+ records.unshift({mode,score,value,date:new Date().toLocaleString()});
+ records=records.slice(0,100);save('cp-records',records);drawRecords();drawHome();
 }
-function resetA() {
-  if(A?.timer) clearInterval(A.timer);
-  A={run:false,left:30,elapsed:0,cycles:0,charge:0,timer:null};
-  $('aState').textContent='PŘIPRAVENO';
-  $('aStart').disabled=false;
-  $('aStart').textContent='Spustit trénink';
-  $('aHint').textContent='E = nabít glowstonem · Q = použít anchor.';
-  drawA();
+function drawRecords(){
+ const body=$('recordRows');body.replaceChildren();
+ $('recordEmpty').style.display=records.length?'none':'block';
+ records.forEach(r=>{const tr=document.createElement('tr');[r.mode,r.score,r.date].forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.appendChild(td)});body.appendChild(tr)});
 }
-function finishA() {
-  clearInterval(A.timer);A.run=false;
-  $('aState').textContent='DOKONČENO';
-  $('aStart').disabled=false;$('aStart').textContent='Zkusit znovu';
-  $('aHint').textContent='Hotovo! Skóre: '+A.cycles+' cyklů.';
-  if(A.cycles) addRecord('Anchor Practice',A.cycles+' cyklů');
-  drawHome();toast('Anchor test dokončen');
+function drawHome(){
+ const a=records.filter(r=>r.mode==='Anchor Practice'),c=records.filter(r=>r.mode==='Crystal Speed');
+ $('bestA').textContent=a.length?Math.max(...a.map(r=>Number(r.value)||0))+' cyklů':'—';
+ $('bestC').textContent=c.length?Math.max(...c.map(r=>Number(r.value)||0)).toFixed(1)+' CPS':'—';
+ $('runs').textContent=records.length;
+ $('recent').textContent=records.length?records.slice(0,3).map(r=>r.mode+' — '+r.score).join(' · '):'Zatím žádné výsledky.';
 }
-function startA() {
-  resetA();A.run=true;
-  $('aState').textContent='PROBÍHÁ';
-  $('aStart').disabled=true;$('aStart').textContent='Trénink běží…';
-  A.timer=setInterval(()=>{
-    A.left=Math.max(0,A.left-.1);A.elapsed+=.1;drawA();
-    if(A.left<=0)finishA();
-  },100);
-}
-function charge() {
-  if(!A.run)return;
-  if(A.charge>=4){toast('Anchor je nabitý na maximum');return;}
-  A.charge++;drawA();
-}
-function useAnchor() {
-  if(!A.run)return;
-  if(!A.charge){toast('Nejdřív nabij anchor');return;}
-  A.charge=0;A.cycles++;
-  $('anchorBlock').style.borderColor='var(--green)';
-  setTimeout(()=>$('anchorBlock').style.borderColor='',130);
-  drawA();
-}
-$('aStart').addEventListener('click',startA);
-$('aReset').addEventListener('click',resetA);
+$('clearRecords').onclick=()=>{if(confirm('Opravdu smazat historii?')){records=[];save('cp-records',records);drawRecords();drawHome();toast('Historie smazána')}};
 
-/* Crystal Speed */
-function drawC() {
-  const n=C.breaks+C.places+C.extra;
-  $('cTimer').textContent=C.left.toFixed(1)+' s';
-  $('actions').textContent=n;
-  $('cps').textContent=(n/Math.max(.1,10-C.left)).toFixed(1);
-  $('breaks').textContent=C.breaks;
-  $('places').textContent=C.places;
-  $('accuracy').textContent=n?Math.round((n-C.wrong)/n*100)+'%':'—';
+const bindDefs=[
+ {id:'aCharge',label:'charge',section:'anchor'},
+ {id:'aUse',label:'use',section:'anchor'},
+ {id:'cBreak',label:'brk',section:'crystal'},
+ {id:'cPlace',label:'place',section:'crystal'},
+ {id:'cExtra',label:'extra',section:'crystal'}
+];
+function mouseName(v){return v===0?t('left'):v===1?t('middle'):v===2?t('right'):v===3?t('mb4'):t('mb5')}
+function bindName(b){return b?.type==='mouse'?mouseName(b.value):String(b?.value||'—').toUpperCase()}
+function renderBindings(){
+ const make=section=>bindDefs.filter(d=>!section||d.section===section).map(d=>
+ `<div class="bindrow"><span>${t(d.label)}</span><button class="btn ${listenFor===d.id?'listening':''}" data-bind="${d.id}">${listenFor===d.id?t('bindPrompt'):bindName(settings[d.id])}</button><button class="btn" data-mousebind="${d.id}">🖱 ${t('mouse')}</button></div>`
+ ).join('');
+ $('anchorBindings').innerHTML=make('anchor');$('crystalBindings').innerHTML=make('crystal');$('settingsBindings').innerHTML=make();
+ document.querySelectorAll('[data-bind]').forEach(b=>b.onclick=()=>{listenFor=b.dataset.bind;pendingMouse=false;renderBindings();toast(t('bindPrompt'))});
+ document.querySelectorAll('[data-mousebind]').forEach(b=>b.onclick=()=>{listenFor=b.dataset.mousebind;pendingMouse=true;renderBindings();toast('Klikni na tlačítko myši')});
 }
-function resetC() {
-  if(C?.timer)clearInterval(C.timer);
-  C={run:false,left:10,breaks:0,places:0,extra:0,wrong:0,expected:'break',timer:null};
-  $('cState').textContent='PŘIPRAVENO';
-  $('cStart').disabled=false;$('cStart').textContent='Spustit test';
-  $('cHint').textContent='Spusť test. Levý klik = rozbití, pravý klik = položení.';
-  drawC();
-}
-function finishC() {
-  clearInterval(C.timer);C.run=false;
-  $('cState').textContent='DOKONČENO';
-  $('cStart').disabled=false;$('cStart').textContent='Zkusit znovu';
-  const n=C.breaks+C.places+C.extra;
-  $('cHint').textContent='Hotovo! '+n+' akcí za 10 sekund.';
-  addRecord('Crystal Speed',(n/10).toFixed(1)+' akcí/s');
-  drawHome();toast('Test dokončen — výsledek uložen');
-}
-function startC() {
-  resetC();C.run=true;
-  $('cState').textContent='PROBÍHÁ';
-  $('cStart').disabled=true;$('cStart').textContent='Test běží…';
-  C.timer=setInterval(()=>{
-    C.left=Math.max(0,C.left-.1);drawC();
-    if(C.left<=0)finishC();
-  },100);
-}
-function action(type) {
-  if(!C.run)return;
-  if(type==='break')C.breaks++;
-  else if(type==='place')C.places++;
-  else C.extra++;
-  if(type!==C.expected)C.wrong++;
-  C.expected=type==='break'?'place':'break';
-  $('target').classList.add('hit');
-  setTimeout(()=>$('target').classList.remove('hit'),70);
-  drawC();
-}
-$('cStart').addEventListener('click',startC);
-$('cReset').addEventListener('click',resetC);
-$('target').addEventListener('pointerdown',e=>{
-  if(e.button===0){e.preventDefault();action('break');}
-  else if(e.button===2){e.preventDefault();action('place');}
-});
-$('target').addEventListener('contextmenu',e=>e.preventDefault());
-
-/* History */
-function addRecord(mode,score) {
-  records.unshift({mode,score,date:new Date().toLocaleString('cs-CZ')});
-  records=records.slice(0,100);save('cp-records',records);drawRecords();
-}
-function drawRecords() {
-  const body=$('rows');body.replaceChildren();
-  $('empty').classList.toggle('hidden',records.length>0);
-  records.forEach(record=>{
-    const tr=document.createElement('tr');
-    [record.mode,record.score,record.date].forEach(value=>{
-      const td=document.createElement('td');td.textContent=value;tr.appendChild(td);
-    });
-    body.appendChild(tr);
-  });
-}
-function drawHome() {
-  const anchors=records.filter(r=>r.mode==='Anchor Practice').map(r=>parseInt(r.score)||0);
-  const crystals=records.filter(r=>r.mode==='Crystal Speed').map(r=>parseFloat(r.score)||0);
-  $('bestA').textContent=anchors.length?Math.max(...anchors)+' cyklů':'—';
-  $('bestC').textContent=crystals.length?Math.max(...crystals).toFixed(1)+' akcí/s':'—';
-  $('runs').textContent=records.length;
-}
-$('clear').addEventListener('click',()=>{
-  if(confirm('Opravdu smazat historii?')) {
-    records=[];save('cp-records',records);drawRecords();drawHome();toast('Historie smazána');
-  }
-});
-
-/* Settings */
-function fillSettings() {
-  $('bindCharge').value=settings.charge;
-  $('bindUse').value=settings.use;
-  $('bindBreak').value=settings.brk;
-  $('bindPlace').value=settings.place;
-  $('bindExtra').value=settings.extra;
-  $('kCharge').textContent=settings.charge.toUpperCase();
-  $('kUse').textContent=settings.use.toUpperCase();
-  $('kBreak').textContent=settings.brk.toUpperCase();
-  $('kPlace').textContent=settings.place.toUpperCase();
-  $('kExtra').textContent=settings.extra.toUpperCase();
-}
-$('saveSettings').addEventListener('click',()=>{
-  const next={
-    charge:$('bindCharge').value.trim().toLowerCase(),
-    use:$('bindUse').value.trim().toLowerCase(),
-    brk:$('bindBreak').value.trim().toLowerCase(),
-    place:$('bindPlace').value.trim().toLowerCase(),
-    extra:$('bindExtra').value.trim().toLowerCase()
-  };
-  if(Object.values(next).some(v=>!v||v.length!==1)) {
-    toast('Každá klávesa musí být jeden znak');return;
-  }
-  if(next.charge===next.use||new Set([next.brk,next.place,next.extra]).size!==3) {
-    toast('Klávesy se nesmí překrývat');return;
-  }
-  settings=next;save('cp-settings',settings);fillSettings();toast('Nastavení uloženo');
-});
-$('defaults').addEventListener('click',()=>{
-  settings={...DEFAULTS};save('cp-settings',settings);fillSettings();toast('Výchozí klávesy obnoveny');
-});
-
-/* Klávesové ovládání */
 document.addEventListener('keydown',e=>{
-  if(e.repeat||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;
-  const key=e.key.toLowerCase();
-  if(key==='escape'){if(A.run)resetA();if(C.run)resetC();return;}
-  if(key===settings.charge){e.preventDefault();charge();}
-  else if(key===settings.use){e.preventDefault();useAnchor();}
-  else if(key==='r'){
-    if($('page-anchor').classList.contains('active'))resetA();
-    if($('page-crystal').classList.contains('active'))resetC();
-  }
-  if($('page-crystal').classList.contains('active')&&C.run){
-    if(key===settings.brk)action('break');
-    else if(key===settings.place)action('place');
-    else if(key===settings.extra)action('extra');
-  }
+ if(listenFor&&!pendingMouse){
+  e.preventDefault();e.stopPropagation();
+  if(['Escape','Tab','Shift','Control','Alt'].includes(e.key))return;
+  settings[listenFor]={type:'key',value:e.key.toLowerCase()};listenFor=null;renderBindings();return;
+ }
+ if(e.repeat||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;
+ const key=e.key.toLowerCase();
+ if(key==='r'){if($('page-anchor').classList.contains('active'))resetA();if($('page-crystal').classList.contains('active'))resetC()}
+ for(const d of bindDefs){const b=settings[d.id];if(b?.type==='key'&&b.value===key){
+  if(d.id==='aCharge')charge();if(d.id==='aUse')useAnchor();
+  if(d.id==='cBreak')action('break');if(d.id==='cPlace')action('place');if(d.id==='cExtra')action('extra');
+ }}
 });
-fillSettings();
-resetA();
-resetC();
-drawHome();
-drawRecords();
+document.addEventListener('mousedown',e=>{
+ if(listenFor&&pendingMouse){e.preventDefault();e.stopPropagation();settings[listenFor]={type:'mouse',value:e.button};listenFor=null;pendingMouse=false;renderBindings();return}
+ for(const d of bindDefs){const b=settings[d.id];if(b?.type==='mouse'&&b.value===e.button){
+  if(d.id==='aCharge')charge();if(d.id==='aUse')useAnchor();
+  if(d.id==='cBreak')action('break');if(d.id==='cPlace')action('place');if(d.id==='cExtra')action('extra');
+ }}
+},{capture:true});
+document.addEventListener('contextmenu',e=>{if(listenFor||e.target===$('crystalObject'))e.preventDefault()});
+
+function fillConfig(){
+ $('anchorDuration').value=config.anchorDuration;$('crystalDuration').value=config.crystalDuration;
+ $('anchorGoal').value=config.anchorGoal;$('crystalGoal').value=config.crystalGoal;
+ $('themeSelect').value=config.theme;$('languageSettings').value=config.language;
+}
+$('saveSettings').onclick=()=>{
+ config.anchorDuration=Math.max(5,Math.min(600,Number($('anchorDuration').value)||30));
+ config.crystalDuration=Math.max(5,Math.min(600,Number($('crystalDuration').value)||10));
+ config.anchorGoal=Math.max(0,Math.min(10000,Number($('anchorGoal').value)||0));
+ config.crystalGoal=Math.max(0,Math.min(10000,Number($('crystalGoal').value)||0));
+ config.theme=$('themeSelect').value;config.language=$('languageSettings').value;
+ save('cp-config',config);save('cp-settings',settings);setTheme(config.theme);
+ resetA();resetC();renderBindings();toast('Nastavení uloženo');
+};
+$('defaultSettings').onclick=()=>{
+ settings=JSON.parse(JSON.stringify(defaults));config={...defaultConfig};
+ save('cp-settings',settings);save('cp-config',config);fillConfig();setTheme(config.theme);
+ resetA();resetC();renderBindings();toast('Výchozí nastavení obnoveno');
+};
+fillConfig();setTheme(config.theme);resetA();resetC();renderBindings();drawRecords();drawHome();
 })();
 </script>
 </body>
